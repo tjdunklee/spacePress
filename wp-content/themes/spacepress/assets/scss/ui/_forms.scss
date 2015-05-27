@@ -1,0 +1,181 @@
+//------------------------------------//
+//  $FORMS
+//------------------------------------//
+
+form { margin: 0; }
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
+  // so we reset that to ensure it behaves more like a standard block element.
+  // See https://github.com/twbs/bootstrap/issues/12359.
+  min-width: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+}
+
+// Normalize form controls
+//
+// While most of our form styles require extra classes, some basic normalization
+// is required to ensure optimum display with or without those classes to better
+// address browser inconsistencies.
+
+// Search inputs
+// Override content-box in Normalize (* isn't specific enough)
+// This overrides the extra rounded corners on search inputs in iOS so that our
+// `.form-control` class can properly style them. Note that this cannot simply
+// be added to `.form-control` as it's not specific enough. For details, see
+// https://github.com/twbs/bootstrap/issues/11586.
+input[type="search"] {
+  @include box-sizing(border-box);
+  -webkit-appearance: none;
+}
+
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9; // IE8-9
+  line-height: normal;
+}
+
+// Set the height of file controls to match text inputs
+input[type="file"] {
+  display: block;
+}
+
+// Make range inputs behave like textual form controls
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] { height: auto; }
+
+// Focus for file, radio, and checkbox
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus { @include tab-focus; }
+
+
+// Common form controls
+//
+// Shared size and type resets for form controls. Apply `.form-control` to any
+// of the following form controls:
+//
+// select
+// textarea
+// input[type="text"]
+// input[type="password"]
+// input[type="datetime"]
+// input[type="datetime-local"]
+// input[type="date"]
+// input[type="month"]
+// input[type="time"]
+// input[type="week"]
+// input[type="number"]
+// input[type="email"]
+// input[type="url"]
+// input[type="search"]
+// input[type="tel"]
+// input[type="color"]
+.form-control {
+  display: block;
+  width: 100%;
+  height: 2.5em;
+  padding: .2em 1em;
+  font-family: $font-body;
+  @include rem(font-size, 1);
+  line-height: $line-height-ratio;
+  color: $gray-dark;
+  vertical-align: middle;
+  background-color: $white;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid $gray;
+  border-radius: 0;
+  @include transition(border-color ease-in-out .15s);
+
+  // Customize the `:focus` state to imitate native WebKit styles
+  @include form-control-focus;
+
+  // Placeholder
+  @include placeholder { color: $primary; }
+
+  // Disabled and read-only inputs
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: $gray-light;
+    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+
+// Reset height for `textarea`s
+textarea.form-control {
+  height: auto;
+}
+
+// Remove inner shadow on webkit, see http://zomigi.com/blog/bug-fixes-for-removing-the-inner-shadow-on-ios-inputs
+input.form-control,
+textarea.form-control {
+  background-image: -webkit-linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0));
+}
+
+
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls
+.radio,
+.checkbox {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  label {
+    min-height: $base-line-height; // Ensure the input doesn't jump when there is no text
+    padding-left: 22px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
+
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 4px \9;
+}
+// Move up sibling radios or checkboxes for tighter spacing
+.radio + .radio,
+.checkbox + .checkbox { margin-top: -5px; }
+
+// Disabled inputs
+input[type="radio"],
+input[type="checkbox"],
+.radio,
+.checkbox {
+  &[disabled],
+  fieldset[disabled] & { cursor: not-allowed; }
+}
+
+// Form control validation states
+.has-error {
+  @include form-control-validation($state-error, darken($state-error, 5%));
+}
+
+.has-success {
+  @include form-control-validation($state-success, darken($state-success, 5%));
+}

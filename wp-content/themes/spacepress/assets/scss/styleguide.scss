@@ -1,0 +1,43 @@
+$legacy-ie: true;
+@import "compass";
+@import "vars";
+@import "base/functions";
+@import "base/mixins";
+
+.sg-landmark {
+  @include rem(margin-bottom, 3 * $base-spacing-unit);
+}
+
+.sg-heading {
+  padding: 0 0 .2em;
+  border-bottom: 2px solid $gray;
+}
+
+.sg-demo-block {
+  background-color: $gray;
+  color: $white;
+  @include rem(padding, $half-spacing-unit);
+  @include rem(margin, 0 0 $base-spacing-unit);
+}
+
+.sg-colors li {
+  border: 1px solid $gray-light;
+  background: $white;
+  @include rem(padding, .4);
+  @include rem(margin-bottom, $half-spacing-unit);
+}
+
+.sg-swatch {
+  display: block;
+  height: 100px;
+  width: 100px;
+}
+
+.sg-field-container {
+  margin-bottom: 1em;
+
+  label {
+    display: block;
+  }
+}
+
