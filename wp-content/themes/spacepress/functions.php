@@ -39,7 +39,7 @@ function spacepress_setup() {
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
-	//add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -58,15 +58,15 @@ function spacepress_setup() {
 	 * Enable support for Post Formats.
 	 * See http://codex.wordpress.org/Post_Formats
 	 */
-	add_theme_support( 'post-formats', array(
+	/*add_theme_support( 'post-formats', array(
 		'aside', 'image', 'video', 'quote', 'link',
-	) );
+  ) );*/
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'spacepress_custom_background_args', array(
+	/*add_theme_support( 'custom-background', apply_filters( 'spacepress_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
-	) ) );
+  ) ) );*/
 }
 endif; // spacepress_setup
 add_action( 'after_setup_theme', 'spacepress_setup' );
@@ -105,11 +105,12 @@ add_action( 'widgets_init', 'spacepress_widgets_init' );
  * Enqueue scripts and styles.
  */
 function spacepress_scripts() {
-	wp_enqueue_style( 'spacepress-style', get_stylesheet_uri() );
+  // Only add the styleguide css to the styleguide template
+  if ( is_page_template( 'template-styleguide.php' ) ) {
+    wp_enqueue_style( 'widgets-styleguide', get_template_directory_uri().'/assets/stylesheets/styleguide.css' );
+  }
 
-	wp_enqueue_script( 'spacepress-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'spacepress-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'spacepress-js', get_template_directory_uri() . '/assets/javascripts/application.js', array('jquery'), '', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
