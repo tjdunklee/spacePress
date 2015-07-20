@@ -5,6 +5,11 @@
 *.bak
 *.swp
 Thumbs.db
+node_modules
+.sass-cache
+
+# don't check in compiled files
+wp-content/themes/spacepress/assets/stylesheets/*
 
 # wordpress specific
 wp-config.php

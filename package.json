@@ -1,0 +1,9 @@
+{
+  "name": "spacepress",
+  "version": "1.0.0",
+  "homepage": "https://github.com/tjdunklee/spacePress#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-compass": "^2.1.0"
+  }
+}
