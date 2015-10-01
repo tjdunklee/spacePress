@@ -53,12 +53,14 @@ Most of these are basic steps relating to local Wordpress development using [MAM
     - **Database password**: root
     - **Database host**: localhost
     - **Database table prefix**: (see note below)
-  
-  > **Database Prefix Suggestion:** I would suggest making your database prefix something that relates to the site you developing. For instance if your site was called "Bob's Worm Store" it would be best to use something like "_bws" as your database prefix.
+    
+    > **Database Prefix Suggestion:** I would suggest making your database prefix something that relates to the site you developing. For instance if your site was called "Bob's Worm Store" it would be best to use something like "_bws" as your database prefix.
 
 7. Follow the rest of the steps to setup an admin login.
 
-8. **Optional:** Create a style guide page using the provided template.
+8. **TODO:** Activate the spacePress starter theme.
+
+9. **TODO:** Create a style guide page using the provided template.
 
 ## Development Process
 To make development changes, you will need to have MAMP running with the web server pointed to the root directory and Gulp running to watch for theme changes. 
