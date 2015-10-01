@@ -19,9 +19,10 @@ Most of these are basic steps relating to local Wordpress development using [MAM
     $ cd spacePress
     ```
 
-2. We will need to make sure Gulp is installed globally on your machine:
+2. We will need to make sure Gulp is installed globally on your machine. After that we can run our normal NPM install:
     ```
     $ npm install --global gulp
+    $ npm install
     ```
  
 3. Also, you will need the Bundler gem to install any Ruby depedencies:
