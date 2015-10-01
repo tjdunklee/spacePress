@@ -1,4 +1,4 @@
-# spacePress
+![Banner Image](logo-spacepress-repo.png)
 
 ## Overview
 A fully functioning starter Wordpress build which includes spaceBase and a Gulp task runner.
