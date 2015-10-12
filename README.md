@@ -6,7 +6,7 @@ A fully functioning starter Wordpress build which includes spaceBase and a Gulp 
 **What's Included:**
 - full install of [Wordpress](https://wordpress.org/) core files
 - the latest release of [spaceBase](http://spacebase.space150.com/)
-- barebones theme based on the [Underscores](http://underscores.me/) started theme
+- barebones theme based on the [Underscores](http://underscores.me/) starter theme
 - [Gulp](http://gulpjs.com/) task runner with pre-built tasks for compiling SCSS
 - Wordpress page template for easily adding the spaceBase style guide
 
