@@ -18,8 +18,8 @@ Template Name: Styleguide
 get_header(); ?>
 
     <div class="island text-center">
-      <h1>spaceBase</h1>
-      <p><a href="https://github.com/space150/spaceBase">View on GitHub</a></p>
+      <h1>Style Guide</h1>
+      <p><a href="https://github.com/space150/spaceBase">Built using spaceBase</a></p>
     </div>
     <div class="sg-landmark">
       <h2 class="sg-heading">Basic Grid</h2>
