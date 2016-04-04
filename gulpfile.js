@@ -1,59 +1,50 @@
-// Set Paths to Theme Assets
-// * Be sure to include trailing slash
-var assetPath = 'wp-content/themes/spacepress/assets/';
+// -----------------------------------------------------------------------------
+// CONFIGURATION
+//  - Set path to theme assets (be sure to include trailing slash)
+//  - Read more about Autoprefixer options (https://github.com/postcss/autoprefixer#options)
+// -----------------------------------------------------------------------------
+var assetPath = 'wp-content/themes/spacepress/assets/',
+    autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'ie >= 9', 'Firefox ESR'] };
 
-// Include gulp
+
+// -----------------------------------------------------------------------------
+// REQUIRES
+// -----------------------------------------------------------------------------
+// Global gulp
 var gulp = require('gulp'); 
 
-// Include Our Plugins
-var compass = require('gulp-compass');
+// Plugins
+var sass = require('gulp-sass'), 
+    autoprefixer = require('gulp-autoprefixer'),
+    sourcemaps = require('gulp-sourcemaps');
 
-// by default, the environment is run as development
-var config = {'env': 'dev'};
 
-
-// Compile SCSS Using Compass
-gulp.task('compass', function() {
-  if (config.env === 'dev') {
-    gulp.src(assetPath + 'scss/**/*.scss')
-    .pipe(compass({
-      config_file: 'config.rb',
-      css: assetPath + 'stylesheets',
-      sass: assetPath + 'scss',
-      comments: true
-    }))
-    .on('error', function() {
-      // error catch so things still run
-    })
-    .pipe(gulp.dest(assetPath + 'stylesheets'));
-  }
-  else {
-    gulp.src(assetPath + 'scss/**/*.scss')
-    .pipe(compass({
-      config_file: 'config.rb',
-      css: assetPath + 'stylesheets',
-      sass: assetPath + 'scss',
-      style: 'compressed'
-    }))
-    .pipe(gulp.dest(assetPath + 'stylesheets'));
-  }
+// -----------------------------------------------------------------------------
+// SASS TASK
+// -----------------------------------------------------------------------------
+// Compile SCSS, Autoprefix it, and build Sourcemaps
+gulp.task('sass', function() {
+  return gulp
+  .src(assetPath + 'scss/**/*.scss')
+  .pipe(sourcemaps.init())
+  .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+  .pipe(autoprefixer(autoprefixerOptions))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest(assetPath + 'stylesheets'));
 });
 
 
-// Set Environment to Prod for Min Assets
-gulp.task('prodconfig', function () {
-  config.env = 'prod';
-});
-
-
-// Watch Files For Changes
+// -----------------------------------------------------------------------------
+// WATCH TASK
+// -----------------------------------------------------------------------------
 gulp.task('watch', function() {
-  gulp.watch(assetPath + 'scss/**/*.scss', ['compass']);
+  gulp.watch(assetPath + 'scss/**/*.scss', ['sass']);
 });
 
 
-// Default Task
-gulp.task('default', ['compass', 'watch']);
+// -----------------------------------------------------------------------------
+// TASK RUNNERS
+// -----------------------------------------------------------------------------
 
-// Prod Build
-gulp.task('prod', ['prodconfig', 'compass' ]);
+// Default
+gulp.task('default', ['sass', 'watch']);
