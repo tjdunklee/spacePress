@@ -1,19 +1,9 @@
+
 <?php
 /*
 Template Name: Styleguide
  * This template basically inserts the styleguide markup in its entirety.
 */
-
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * @package spacePress
- */
 
 get_header(); ?>
 

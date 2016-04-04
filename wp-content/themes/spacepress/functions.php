@@ -1,8 +1,10 @@
 <?php
 /**
- * spacePress functions and definitions
+ * spacepress functions and definitions.
  *
- * @package spacePress
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package spacepress
  */
 
 if ( ! function_exists( 'spacepress_setup' ) ) :
@@ -14,12 +16,11 @@ if ( ! function_exists( 'spacepress_setup' ) ) :
  * as indicating support for post thumbnails.
  */
 function spacepress_setup() {
-
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on spacePress, use a find and replace
-	 * to change 'spacepress' to the name of your theme in all the template files
+	 * If you're building a theme based on spacepress, use a find and replace
+	 * to change 'spacepress' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'spacepress', get_template_directory() . '/languages' );
 
@@ -37,13 +38,13 @@ function spacepress_setup() {
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
-	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'spacepress' ),
+		'primary' => esc_html__( 'Primary', 'spacepress' ),
 	) );
 
 	/*
@@ -51,24 +52,32 @@ function spacepress_setup() {
 	 * to output valid HTML5.
 	 */
 	add_theme_support( 'html5', array(
-		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
 	) );
 
 	/*
 	 * Enable support for Post Formats.
-	 * See http://codex.wordpress.org/Post_Formats
+	 * See https://developer.wordpress.org/themes/functionality/post-formats/
 	 */
-	/*add_theme_support( 'post-formats', array(
-		'aside', 'image', 'video', 'quote', 'link',
-  ) );*/
+	add_theme_support( 'post-formats', array(
+		'aside',
+		'image',
+		'video',
+		'quote',
+		'link',
+	) );
 
 	// Set up the WordPress core custom background feature.
-	/*add_theme_support( 'custom-background', apply_filters( 'spacepress_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'spacepress_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
-  ) ) );*/
+	) ) );
 }
-endif; // spacepress_setup
+endif;
 add_action( 'after_setup_theme', 'spacepress_setup' );
 
 /**
@@ -86,17 +95,17 @@ add_action( 'after_setup_theme', 'spacepress_content_width', 0 );
 /**
  * Register widget area.
  *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function spacepress_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'spacepress' ),
 		'id'            => 'sidebar-1',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'description'   => esc_html__( 'Add widgets here.', 'spacepress' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
 	) );
 }
 add_action( 'widgets_init', 'spacepress_widgets_init' );
@@ -107,21 +116,23 @@ add_action( 'widgets_init', 'spacepress_widgets_init' );
 function spacepress_scripts() {
   // Only add the styleguide css to the styleguide template
   if ( is_page_template( 'template-styleguide.php' ) ) {
-    wp_enqueue_style( 'widgets-styleguide', get_template_directory_uri().'/assets/stylesheets/styleguide.css' );
+    wp_enqueue_style( 'spacepress-styleguide', get_template_directory_uri().'/assets/stylesheets/styleguide.css' );
   }
 
-	wp_enqueue_script( 'spacepress-js', get_template_directory_uri() . '/assets/javascripts/application.js', array('jquery'), '', true );
-
+	wp_enqueue_script( 'spacepress-navigation', get_template_directory_uri().'/assets/javascripts/underscores/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'spacepress-skip-link-focus-fix', get_template_directory_uri().'/assets/javascripts/underscores/skip-link-focus-fix.js', array(), '20151215', true );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+  wp_enqueue_script( 'spacepress-js', get_template_directory_uri() . '/assets/javascripts/application.js', array('jquery'), '', true );
 }
 add_action( 'wp_enqueue_scripts', 'spacepress_scripts' );
 
 /**
  * Implement the Custom Header feature.
  */
-//require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
