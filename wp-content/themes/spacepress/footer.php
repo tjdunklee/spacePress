@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package spacepress
+ * @package spacePress
  */
 
 ?>
@@ -17,7 +17,7 @@
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'spacepress' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'spacepress' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'spacepress' ), 'spacepress', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
+			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'spacepress' ), 'spacepress', '<a href="http://www.timdunklee.com" rel="designer">Tim Dunklee</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

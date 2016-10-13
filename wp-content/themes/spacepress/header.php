@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package spacepress
+ * @package spacePress
  */
 
 ?><!DOCTYPE html>
@@ -15,7 +15,6 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <!--[if (gt IE 8) | (IEMobile)]><!-->
 <link href="<?php bloginfo( 'template_url' ); ?>/assets/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" />
@@ -23,13 +22,13 @@
 <!--[if (lt IE 9) & (!IEMobile)]>
 <link href="<?php bloginfo( 'template_url' ); ?>/assets/stylesheets/application-ie.css" media="all" rel="stylesheet" type="text/css" />
 <![endif]-->
-<?php wp_head(); ?>
 
+<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <div id="page" class="site-wrapper">
-	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'spacepress' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'spacepress' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">

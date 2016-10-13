@@ -1,10 +1,10 @@
 <?php
 /**
- * spacepress functions and definitions.
+ * spacePress functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package spacepress
+ * @package spacePress
  */
 
 if ( ! function_exists( 'spacepress_setup' ) ) :
@@ -19,7 +19,7 @@ function spacepress_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on spacepress, use a find and replace
+	 * If you're building a theme based on spacePress, use a find and replace
 	 * to change 'spacepress' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'spacepress', get_template_directory() . '/languages' );
@@ -57,18 +57,6 @@ function spacepress_setup() {
 		'comment-list',
 		'gallery',
 		'caption',
-	) );
-
-	/*
-	 * Enable support for Post Formats.
-	 * See https://developer.wordpress.org/themes/functionality/post-formats/
-	 */
-	add_theme_support( 'post-formats', array(
-		'aside',
-		'image',
-		'video',
-		'quote',
-		'link',
 	) );
 
 	// Set up the WordPress core custom background feature.
@@ -119,8 +107,10 @@ function spacepress_scripts() {
     wp_enqueue_style( 'spacepress-styleguide', get_template_directory_uri().'/assets/stylesheets/styleguide.css' );
   }
 
-	wp_enqueue_script( 'spacepress-navigation', get_template_directory_uri().'/assets/javascripts/underscores/navigation.js', array(), '20151215', true );
-	wp_enqueue_script( 'spacepress-skip-link-focus-fix', get_template_directory_uri().'/assets/javascripts/underscores/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'spacepress-navigation', get_template_directory_uri() . '/assets/javascripts/underscores/navigation.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'spacepress-skip-link-focus-fix', get_template_directory_uri() . '/assets/javascripts/underscores/skip-link-focus-fix.js', array(), '20151215', true );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

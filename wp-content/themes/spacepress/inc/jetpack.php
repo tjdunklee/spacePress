@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package spacepress
+ * @package spacePress
  */
 
 /**
@@ -33,9 +33,9 @@ function spacepress_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :
-		    get_template_part( 'template-parts/content', 'search' );
+			get_template_part( 'template-parts/content', 'search' );
 		else :
-		    get_template_part( 'template-parts/content', get_post_format() );
+			get_template_part( 'template-parts/content', get_post_format() );
 		endif;
 	}
 }

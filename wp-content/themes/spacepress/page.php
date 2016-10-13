@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package spacepress
+ * @package spacePress
  */
 
 get_header(); ?>

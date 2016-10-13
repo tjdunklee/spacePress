@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package spacepress
+ * @package spacePress
  */
 
 if ( ! function_exists( 'spacepress_posted_on' ) ) :
