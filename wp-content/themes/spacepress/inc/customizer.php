@@ -1,6 +1,6 @@
 <?php
 /**
- * spacePress Theme Customizer.
+ * spacePress Theme Customizer
  *
  * @package spacePress
  */
