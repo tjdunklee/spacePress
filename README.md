@@ -12,56 +12,36 @@ A fully functioning starter Wordpress build which includes spaceBase and a Gulp 
 - [Gulp](http://gulpjs.com/) task runner with pre-built tasks for compiling SCSS
 - Wordpress page template for easily adding the spaceBase style guide
 
-## Local Development Setup
-Most of these are basic steps relating to local Wordpress development using [MAMP](https://www.mamp.info/en/). If you are familiar with the process you will move through this quickly.
+## Running Wordpress Locally
+There are plenty of options to run Wordpress on your local environment. Here are a few recommended platforms:
+* [MAMP](https://www.mamp.info/en/)
+* [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV)
+* [Local by Flywheel](https://local.getflywheel.com/)
 
-1. Browse to the directory that you keep development projects in and clone the project. Then enter the directory that is created.
-    ```
-    $ git clone git@github.com:tjdunklee/spacePress.git
-    $ cd spacePress
-    ```
-    
-2. We will need to make sure Gulp CLI is installed globally on your machine.
+## Local Development Setup
+spacePress uses Gulp to compile SCSS files right out the box. The following steps get everything installed for you the first time you setup the project.
+
+1. We will need to make sure Gulp CLI is installed globally on your machine.
     ```
     $ npm install --global gulp-cli
     ```
   > If you have previously installed a version of gulp globally, please run npm rm --global gulp to make sure your old version doesn't collide with gulp-cli
   
   
-3. After installing the CLI for Gulp, we can install of of our Node modules including the project version of Gulp.
+2. After installing the CLI for Gulp, we can install of of our Node modules including the project version of Gulp.
   
     ```
     $ npm install
     ```
     
-4. Start MAMP and go to Preferences->Web Server and change the "document root" to point to the root of your newly cloned directory. Next hit the "Start Servers" button in MAMP. This will open up the MAMP start page.
-
-5. From the MAMP start page you can access phpMyAdmin under the tools dropdown in the upper navigation. Create a new Database named something appropriate to your project. Take note of this database name as we will need it later on.
-    
-6. Start your Gulp task runner to start watching your SCSS files and do an initial compile.
+3. Start your Gulp task runner to start watching your SCSS files and do an initial compile.
     ```
     $ gulp
     ```
-  > Gulp should start running in your terminal window and continuing running to watch any changes to your SCSS files.
-    
-7. Open your browser and go to [http://localhost:8888](http://localhost:8888) which should start the Wordpress installation. When asked for database details, use the following:
-
-    - **Database name**: (your database name from step #6)
-    - **Database user**: root
-    - **Database password**: root
-    - **Database host**: localhost
-    - **Database table prefix**: (see note below)
-    
-    > **Database Prefix Suggestion:** I would suggest making your database prefix something that relates to the site you developing. For instance if your site was called "Bob's Worm Store" it would be best to use something like "bws_" as your database prefix.
-
-8. Follow the rest of the steps to setup an admin login and setup site details. After that is complete log in to your new Wordpress dashboard.
-
-9. You will need to activate the spacePress starter theme. From the dashboard home go to Appearance->Themes in the lefthand navigation. You will see an installed theme called "spacePress," click "Activate" on this theme.
-
-10. **Optional:** spacePress comes with a template for creating a spaceBase style guide. To take advantage of this you can create a new page and select the "Styleguide" template in the right hand column.
+  > Gulp should start running in your terminal window and continue running to watch any changes to your SCSS files.
 
 ## Development Process
-To make development changes, you will need to have MAMP running with the web server pointed to the root directory and Gulp running to watch for theme changes.
+After the initial setup as detailed above, all you will need to run next time from your command line is the Gulp command to start watching for asset file updates.
 
 ```
 $ gulp
