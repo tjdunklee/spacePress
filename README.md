@@ -2,6 +2,8 @@
 
 [![GitHub release](https://img.shields.io/github/release/tjdunklee/spacePress.svg)](https://github.com/tjdunklee/spacePress/releases)
 
+# NOTE: This has been archived and is no longer maintained.
+
 ## Overview
 A fully functioning starter Wordpress build which includes spaceBase and a Gulp task runner.
 
